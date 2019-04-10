@@ -20,11 +20,12 @@ class App extends Component {
     const { isAuthenticated, authActions } = this.props;
     return (
       <div>
+        isAuthenticated = {JSON.stringify(isAuthenticated)}
         <button onClick={this.handleGoTo('home')}>Home</button>
-        {!isAuthenticated() && (
+        {!isAuthenticated && (
           <button onClick={authActions.login}>Log In</button>
         )}
-        {isAuthenticated() && (
+        {isAuthenticated && (
           <button onClick={authActions.logout}>Log Out</button>
         )}
       </div>
@@ -32,15 +33,18 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isAuthenticated: new Date().getTime() < state.expiresAt,
-});
+const mapStateToProps = state => {
+  console.log(state.auth.expiresAt);
+  return {
+    isAuthenticated: new Date().getTime() < state.auth.expiresAt,
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   authActions: {
-    login: dispatch(login()),
-    logout: dispatch(logout()),
-    renewSession: dispatch(renewSession()),
+    login: () => dispatch(login()),
+    logout: () => dispatch(logout()),
+    renewSession: () => dispatch(renewSession()),
   },
 });
 

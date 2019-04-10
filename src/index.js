@@ -2,25 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
-import App from './components/App/index';
-import Auth from './Auth/Auth';
 import configureStore from './store/configureStore';
 import * as serviceWorker from './serviceWorker';
+import Routes from './router/routes';
 
-console.log({App, Auth})
 export const store = configureStore();
 
 const renderApp = () =>
   ReactDOM.render(
     <Provider store={store}>
-      <App/>
+      <Routes/>
     </Provider>,
     document.getElementById('root'),
   );
-
-if (process.env.NODE_ENV !== 'production' && module.hot) {
-  module.hot.accept('./components/App', renderApp);
-}
 
 renderApp();
 
