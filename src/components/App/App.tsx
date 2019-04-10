@@ -1,11 +1,11 @@
 // src/components/App/index.js
 
-import { History } from 'history';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { login, logout, renewSession } from '../../store/actions/auth';
-import './App.css';
+import { History } from "history";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { ThunkDispatch } from "redux-thunk";
+import { login, logout, renewSession } from "../../store/actions/auth";
+import "./App.css";
 
 interface IAppProps {
   history: History;
@@ -24,7 +24,7 @@ class App extends Component<IAppProps> {
   public componentDidMount() {
     const { authActions } = this.props;
 
-    if (localStorage.getItem('isLoggedIn') === 'true') {
+    if (localStorage.getItem("isLoggedIn") === "true") {
       authActions.renewSession();
     }
   }
@@ -34,7 +34,7 @@ class App extends Component<IAppProps> {
     return (
       <div>
         isAuthenticated = {JSON.stringify(isAuthenticated)}
-        <button onClick={this.handleGoTo('home')}>Home</button>
+        <button onClick={this.handleGoTo("home")}>Home</button>
         {!isAuthenticated && (
           <button onClick={authActions.login}>Log In</button>
         )}
@@ -48,7 +48,7 @@ class App extends Component<IAppProps> {
 
 const mapStateToProps = (state: any) => {
   return {
-    isAuthenticated: new Date().getTime() < state.auth.expiresAt,
+    isAuthenticated: new Date().getTime() < state.auth.expiresAt
   };
 };
 
@@ -56,11 +56,11 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, any>) => ({
   authActions: {
     login: () => dispatch(login()),
     logout: () => dispatch(logout()),
-    renewSession: () => dispatch(renewSession()),
-  },
+    renewSession: () => dispatch(renewSession())
+  }
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(App);

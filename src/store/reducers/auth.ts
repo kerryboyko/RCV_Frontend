@@ -1,5 +1,5 @@
-import { AnyAction } from 'redux';
-import { authTypes } from '../actions/auth';
+import { AnyAction } from "redux";
+import { authTypes } from "../actions/auth";
 
 interface IAuthState {
   accessToken?: string;
@@ -9,12 +9,12 @@ interface IAuthState {
 const initializeState = (): IAuthState => ({
   accessToken: undefined,
   expiresAt: undefined,
-  idToken: undefined,
+  idToken: undefined
 });
 
 export const auth = (
   state: IAuthState = initializeState(),
-  action: AnyAction = { type: 'no-op' },
+  action: AnyAction = { type: "no-op" }
 ): IAuthState => {
   switch (action.type) {
     case authTypes.SET_SESSION:

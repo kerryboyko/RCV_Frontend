@@ -1,11 +1,11 @@
-import React from 'react';
-import { Route, Router } from 'react-router-dom';
-import { AnyAction } from 'redux';
-import App from '../components/App/App';
-import AuthCallback from '../components/AuthCallback/AuthCallback';
-import history from '../history';
-import { store } from '../index';
-import { handleAuthentication } from '../store/actions/auth';
+import React from "react";
+import { Route, Router } from "react-router-dom";
+import { AnyAction } from "redux";
+import App from "../components/App/App";
+import AuthCallback from "../components/AuthCallback/AuthCallback";
+import history from "../history";
+import { store } from "../index";
+import { handleAuthentication } from "../store/actions/auth";
 
 const doAuthenticate = (nextState: any, _replace?: any) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {

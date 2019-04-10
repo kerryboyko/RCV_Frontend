@@ -7,5 +7,5 @@ export const makeReduxTypes = (
 ): IReduxTypes =>
   reduxTypes.reduce(
     (pv: IReduxTypes, cv: string) => ({ ...pv, [cv]: `${prefix}.${cv}` }),
-    {},
+    {}
   );
