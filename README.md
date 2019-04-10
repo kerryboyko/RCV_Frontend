@@ -1,3 +1,26 @@
+# RCV PROJECT FRONTEND
+
+This is a very temporary README for the Ranked Choice Voting frontend for the Equal Citizens project. 
+
+---
+
+Changelog:
+* Wed. Apr. 10, 2019
+Project started. Here's the tech stack:
+
+* React / Redux
+Seriously thought about using Vue, but as I'm hoping to bring in volunteers looking to put some experience under their belt, and React is a more widely known framework, I'm building it with React/Redux.  
+
+* Javascript
+Eventually, a goal will be to move to Typescript for better maintainability, but for right now, as an MVP, we'll be starting with basic Javascript. This is to both onboard people who might not be comfortable with Typescript as well as work well with the authentication software of Auth0.  
+
+* Front-End Only
+The backend will be handled via a seperate repository. 
+
+* Jest (Unit Testing)
+Jest is the default testing package for Create React App. 
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
