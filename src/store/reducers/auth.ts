@@ -3,7 +3,7 @@ import { authTypes } from "../actions/auth";
 const initializeState = () => ({
   accessToken: undefined,
   idToken: undefined,
-  expiresAt: undefined,
+  expiresAt: undefined
 });
 
 export const auth = (state = initializeState(), action = {}) => {

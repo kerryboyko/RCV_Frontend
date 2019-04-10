@@ -6,7 +6,7 @@ import loggerMiddleware from "./enhancers/logger";
 import monitorReducersEnhancer from "./enhancers/monitorReducer";
 import rootReducer from "./reducers";
 
-const configureStore = (preloadedState) => {
+const configureStore = preloadedState => {
   const middlewares = [thunkMiddleware, loggerMiddleware];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 

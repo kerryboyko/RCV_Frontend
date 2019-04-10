@@ -7,7 +7,7 @@ export const authTypes = makeReduxTypes(
   "ERR",
   "SET_SESSION",
   "LOGOUT",
-  "LOGGING_IN",
+  "LOGGING_IN"
 );
 
 export const authConfig = new auth0.WebAuth({
@@ -16,20 +16,20 @@ export const authConfig = new auth0.WebAuth({
   clientID: "2fe4pJb7pjE6oKVa8ZR0NDgn8GjMoZbE",
   redirectUri: "http://localhost:3000/auth_callback",
   responseType: "token id_token",
-  scope: "openid",
+  scope: "openid"
 });
 
-export const login = () => (dispatch) => {
+export const login = () => dispatch => {
   dispatch({ type: authTypes.LOGGING_IN });
   authConfig.authorize();
 };
 
-export const logout = () => (dispatch) => {
+export const logout = () => dispatch => {
   // Remove isLoggedIn flag from localStorage
   localStorage.removeItem("isLoggedIn");
 
   authConfig.logout({
-    return_to: window.location.origin,
+    return_to: window.location.origin
   });
 
   // navigate to the home route
@@ -39,7 +39,7 @@ export const logout = () => (dispatch) => {
 
 export const setError = (errMsg, err) => ({ type: authTypes.ERR, errMsg, err });
 
-export const setSession = (authResult) => (dispatch) => {
+export const setSession = authResult => dispatch => {
   localStorage.setItem("isLoggedIn", "true");
   const expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
   const { accessToken, idToken } = authResult;
@@ -48,13 +48,13 @@ export const setSession = (authResult) => (dispatch) => {
     payload: {
       accessToken,
       idToken,
-      expiresAt,
-    },
+      expiresAt
+    }
   });
   history.replace("/home");
 };
 
-export const handleAuthentication = () => (dispatch) =>
+export const handleAuthentication = () => dispatch =>
   authConfig.parseHash((err, authResult) => {
     if (authResult && authResult.accessToken && authResult.idToken) {
       dispatch(setSession(authResult));
@@ -63,13 +63,13 @@ export const handleAuthentication = () => (dispatch) =>
       dispatch(
         setError(
           `Error: ${err.error}. Check the console for further details.`,
-          err,
-        ),
+          err
+        )
       );
     }
   });
 
-export const renewSession = () => (dispatch) =>
+export const renewSession = () => dispatch =>
   authConfig.checkSession({}, (err, authResult) => {
     if (authResult && authResult.accessToken && authResult.idToken) {
       dispatch(setSession(authResult));
@@ -78,8 +78,8 @@ export const renewSession = () => (dispatch) =>
       dispatch(
         setError(
           `Could not get a new token (${err.error}: ${err.error_description}).`,
-          err,
-        ),
+          err
+        )
       );
     }
   });

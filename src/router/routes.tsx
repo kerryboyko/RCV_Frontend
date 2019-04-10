@@ -15,11 +15,11 @@ const doAuthenticate = (nextState, replace) => {
 export const makeMainRoutes = () => (
   <Router history={history} component={App}>
     <div>
-      <Route path="/" render={(props) => <App {...props} />} />
-      <Route path="/home" render={(props) => <div>Home</div>} />
+      <Route path="/" render={props => <App {...props} />} />
+      <Route path="/home" render={props => <div>Home</div>} />
       <Route
         path="/auth_callback"
-        render={(props) => {
+        render={props => {
           doAuthenticate(props);
           return <AuthCallback {...props} />;
         }}

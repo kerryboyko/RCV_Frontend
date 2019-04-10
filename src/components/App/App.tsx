@@ -6,7 +6,7 @@ import { login, logout, renewSession } from "../../store/actions/auth";
 import "./App.css";
 
 class App extends Component {
-  public handleGoTo = (route) => () => this.props.history.replace(`/${route}`);
+  public handleGoTo = route => () => this.props.history.replace(`/${route}`);
 
   public componentDidMount() {
     const { authActions } = this.props;
@@ -33,21 +33,21 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    isAuthenticated: new Date().getTime() < state.auth.expiresAt,
+    isAuthenticated: new Date().getTime() < state.auth.expiresAt
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   authActions: {
     login: () => dispatch(login()),
     logout: () => dispatch(logout()),
-    renewSession: () => dispatch(renewSession()),
-  },
+    renewSession: () => dispatch(renewSession())
+  }
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(App);
