@@ -1,4 +1,4 @@
-import { authTypes } from '../actions/auth';
+import { authTypes } from "../actions/auth";
 
 const initializeState = () => ({
   accessToken: undefined,
@@ -11,7 +11,7 @@ export const auth = (state = initializeState(), action = {}) => {
     case authTypes.SET_SESSION:
       return action.payload;
     case authTypes.LOGOUT:
-      return initializeState(); 
+      return initializeState();
     default:
       return state;
   }

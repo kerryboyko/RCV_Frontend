@@ -1,27 +1,27 @@
 // src/components/App/index.js
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import './App.css';
-import { login, logout, renewSession } from '../../store/actions/auth';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { login, logout, renewSession } from "../../store/actions/auth";
+import "./App.css";
 
 class App extends Component {
-  handleGoTo = route => () => this.props.history.replace(`/${route}`);
+  public handleGoTo = (route) => () => this.props.history.replace(`/${route}`);
 
-  componentDidMount() {
+  public componentDidMount() {
     const { authActions } = this.props;
 
-    if (localStorage.getItem('isLoggedIn') === 'true') {
+    if (localStorage.getItem("isLoggedIn") === "true") {
       authActions.renewSession();
     }
   }
 
-  render() {
+  public render() {
     const { isAuthenticated, authActions } = this.props;
     return (
       <div>
         isAuthenticated = {JSON.stringify(isAuthenticated)}
-        <button onClick={this.handleGoTo('home')}>Home</button>
+        <button onClick={this.handleGoTo("home")}>Home</button>
         {!isAuthenticated && (
           <button onClick={authActions.login}>Log In</button>
         )}
@@ -33,14 +33,13 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state.auth.expiresAt);
+const mapStateToProps = (state) => {
   return {
     isAuthenticated: new Date().getTime() < state.auth.expiresAt,
   };
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   authActions: {
     login: () => dispatch(login()),
     logout: () => dispatch(logout()),

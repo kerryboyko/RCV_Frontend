@@ -1,19 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import './index.css';
-import configureStore from './store/configureStore';
-import * as serviceWorker from './serviceWorker';
-import Routes from './router/routes';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import "./index.css";
+import Routes from "./router/routes";
+import * as serviceWorker from "./serviceWorker";
+import configureStore from "./store/configureStore";
 
 export const store = configureStore();
 
 const renderApp = () =>
   ReactDOM.render(
     <Provider store={store}>
-      <Routes/>
+      <Routes />
     </Provider>,
-    document.getElementById('root'),
+    document.getElementById("root"),
   );
 
 renderApp();
