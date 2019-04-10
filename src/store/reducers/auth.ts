@@ -1,12 +1,21 @@
-import { authTypes } from "../actions/auth";
+import { AnyAction } from 'redux';
+import { authTypes } from '../actions/auth';
 
-const initializeState = () => ({
+interface IAuthState {
+  accessToken?: string;
+  expiresAt?: number;
+  idToken?: string;
+}
+const initializeState = (): IAuthState => ({
   accessToken: undefined,
+  expiresAt: undefined,
   idToken: undefined,
-  expiresAt: undefined
 });
 
-export const auth = (state = initializeState(), action = {}) => {
+export const auth = (
+  state: IAuthState = initializeState(),
+  action: AnyAction = { type: 'no-op' },
+): IAuthState => {
   switch (action.type) {
     case authTypes.SET_SESSION:
       return action.payload;

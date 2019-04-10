@@ -1,25 +1,26 @@
-import React from "react";
-import { Route, Router } from "react-router-dom";
-import App from "../components/App/App";
-import AuthCallback from "../components/AuthCallback/AuthCallback";
-import history from "../history";
-import { store } from "../index";
-import { handleAuthentication } from "../store/actions/auth";
+import React from 'react';
+import { Route, Router } from 'react-router-dom';
+import { AnyAction } from 'redux';
+import App from '../components/App/App';
+import AuthCallback from '../components/AuthCallback/AuthCallback';
+import history from '../history';
+import { store } from '../index';
+import { handleAuthentication } from '../store/actions/auth';
 
-const doAuthenticate = (nextState, replace) => {
+const doAuthenticate = (nextState: any, _replace?: any) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    store.dispatch(handleAuthentication());
+    handleAuthentication()(store.dispatch);
   }
 };
 
 export const makeMainRoutes = () => (
-  <Router history={history} component={App}>
+  <Router history={history}>
     <div>
       <Route path="/" render={props => <App {...props} />} />
       <Route path="/home" render={props => <div>Home</div>} />
       <Route
         path="/auth_callback"
-        render={props => {
+        render={(props: any) => {
           doAuthenticate(props);
           return <AuthCallback {...props} />;
         }}

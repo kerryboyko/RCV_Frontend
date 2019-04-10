@@ -1,17 +1,19 @@
+import { AnyAction } from 'redux';
+
 const round = (num: number) => Math.round(num * 100) / 100;
 
-const monitorReducerEnhancer = createStore => (
-  reducer,
-  initialState,
-  enhancer
+const monitorReducerEnhancer = (createStore: any) => (
+  reducer: any,
+  initialState: any,
+  enhancer: any,
 ) => {
-  const monitoredReducer = (state, action) => {
+  const monitoredReducer = (state: any, action: AnyAction) => {
     const start = performance.now();
     const newState = reducer(state, action);
     const end = performance.now();
     const diff = round(end - start);
 
-    console.log("reducer process time:", diff);
+    console.log('reducer process time:', diff);
 
     return newState;
   };
