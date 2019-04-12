@@ -8,6 +8,7 @@
       true,
       "check-format",
       "allow-leading-underscore",
+      "allow-pascal-case",
       "require-const-for-all-caps",
       "ban-keywords"
     ]

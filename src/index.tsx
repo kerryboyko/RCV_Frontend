@@ -1,7 +1,7 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import "./index.css";
 import Routes from "./router/routes";
 import * as serviceWorker from "./serviceWorker";
 import configureStore from "./store/configureStore";

@@ -29,6 +29,7 @@ export const login = () => (dispatch: Dispatch) => {
 
 export const logout = () => (dispatch: Dispatch) => {
   // Remove isLoggedIn flag from localStorage
+  dispatch({ type: authTypes.LOGOUT });
   localStorage.removeItem("isLoggedIn");
 
   authConfig.logout({
@@ -37,7 +38,6 @@ export const logout = () => (dispatch: Dispatch) => {
 
   // navigate to the home route
   history.replace("/home");
-  dispatch({ type: authTypes.LOGOUT });
 };
 
 export const setError = (errMsg: string, err: any) => ({
