@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
 import { login, logout, renewSession } from "../../store/actions/auth";
 import LoginButton from "../LoginButton/LoginButton";
+import DouglasAdamsPullout from '../../components/DouglasAdamsPullout';
 
 interface IAppProps {
   history: History;
@@ -40,6 +41,7 @@ class App extends Component<IAppProps> {
           logout={authActions.logout}
           isAuthenticated={isAuthenticated}
         />
+        <DouglasAdamsPullout/>
       </Fragment>
     );
   }

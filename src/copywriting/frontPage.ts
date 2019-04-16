@@ -51,3 +51,5 @@ export const frontPage: any = {
     },
   },
 };
+
+export default frontPage;
