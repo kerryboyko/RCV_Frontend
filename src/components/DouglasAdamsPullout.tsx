@@ -15,6 +15,7 @@ const DouglasAdamsPullout = () => (
           'Very Important Lizard Gives A Speech -- by anarres: http:/foofurple.org'
         }
       />
+      <Card.Title>The Wrong Lizard Problem:</Card.Title>
       <Card.Text>
         {copywriting.EN.pullout.copy.map((line: string) => (
           <div className="pullout__line">{line}</div>
