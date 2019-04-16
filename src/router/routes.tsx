@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Router } from "react-router-dom";
 import { AnyAction } from "redux";
-import App from "../components/App/App";
-import AuthCallback from "../components/AuthCallback/AuthCallback";
+import App from "../containers/App/App";
+import AuthCallback from "../containers/AuthCallback/AuthCallback";
 import history from "../history";
 import { store } from "../index";
 import { handleAuthentication } from "../store/actions/auth";

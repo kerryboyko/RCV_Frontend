@@ -1,4 +1,4 @@
-// src/components/App/index.js
+// src/containers/App/index.js
 
 import { History } from "history";
 import React, { Component, Fragment } from "react";
