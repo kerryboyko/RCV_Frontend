@@ -11,7 +11,8 @@
       "allow-pascal-case",
       "require-const-for-all-caps",
       "ban-keywords"
-    ]
+    ],
+    "object-literal-sort-keys": false
   },
   "rulesDirectory": []
 }
